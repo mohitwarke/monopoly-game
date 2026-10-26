@@ -1,0 +1,31 @@
+{
+  "extends": "@monopoly/tsconfig",
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@monopoly/shared/*": ["../../packages/shared/src/*"],
+      "@monopoly/game-engine/*": ["../../packages/game-engine/src/*"],
+      "@monopoly/rules-engine/*": ["../../packages/rules-engine/src/*"],
+      "@monopoly/networking/*": ["../../packages/networking/src/*"],
+      "@monopoly/modding/*": ["../../packages/modding/src/*"],
+      "@monopoly/ui-components/*": ["../../packages/ui-components/src/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts", "vitest.config.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

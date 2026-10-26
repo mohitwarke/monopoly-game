@@ -1,0 +1,34 @@
+{
+  "name": "@monopoly/networking",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./protocol": "./src/protocol.ts",
+    "./client": "./src/client.ts",
+    "./server": "./src/server.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@monopoly/shared": "workspace:*",
+    "socket.io": "^4.7.4",
+    "socket.io-client": "^4.7.4",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@monopoly/eslint-config": "workspace:*",
+    "@monopoly/tsconfig": "workspace:*",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}

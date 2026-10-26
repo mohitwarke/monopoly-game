@@ -1,0 +1,437 @@
+/* Dice Components Styles */
+
+.dice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.dice-icon {
+  color: #333;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Dice Pair */
+.dice-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.dice-container {
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.dice-container:hover:not(.disabled) {
+  transform: scale(1.02);
+}
+
+.dice-cube {
+  position: relative;
+  background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.dice-cube::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
+  z-index: -1;
+}
+
+.dice-icon {
+  color: #222;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.dice-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Georgia', serif;
+}
+
+.total-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.total-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.double-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  animation: doublePulse 1s ease-in-out infinite;
+}
+
+@keyframes doublePulse {
+  0%, 100% { box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4); }
+  50% { box-shadow: 0 2px 16px rgba(255, 215, 0, 0.7); }
+}
+
+.roll-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931A 100%);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
+}
+
+.roll-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255, 107, 53, 0.6);
+}
+
+.roll-btn:active {
+  transform: translateY(0);
+}
+
+.roll-btn .spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.dice-disabled {
+  color: #888;
+  font-size: 0.9rem;
+  padding: 12px;
+  text-align: center;
+}
+
+/* Rolling State */
+.dice-pair.rolling .dice-cube {
+  animation: diceShake 0.1s ease-in-out infinite;
+}
+
+@keyframes diceShake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-4px) rotate(-5deg); }
+  75% { transform: translateX(4px) rotate(5deg); }
+}
+
+/* Double State */
+.dice-pair.double .dice-cube {
+  border-color: #FFD700;
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Dice Roll Animation */
+.dice-roll-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.animation-container {
+  display: flex;
+  gap: 24px;
+  perspective: 1000px;
+}
+
+.dice-3d {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: diceFloat 3s ease-in-out infinite;
+}
+
+@keyframes diceFloat {
+  0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+  50% { transform: translateY(-10px) rotateX(5deg) rotateY(5deg); }
+}
+
+.dice-icon-3d {
+  color: #222;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.roll-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-total {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.result-total span {
+  font-family: 'Georgia', serif;
+  font-size: 3rem;
+}
+
+.result-double {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFD700;
+  font-size: 1.25rem;
+  font-weight: bold;
+  animation: doubleCelebrate 0.5s ease-out;
+}
+
+@keyframes doubleCelebrate {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.rolling-text {
+  color: #aaa;
+  font-size: 1.1rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Dice History */
+.dice-history {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.dice-history h4 {
+  margin: 0 0 12px;
+  color: #FFD700;
+  font-size: 0.9rem;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.history-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 215, 0, 0.2);
+}
+
+.history-item.double {
+  border-color: rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.history-dice {
+  display: flex;
+  gap: 4px;
+}
+
+.history-dice-icon {
+  color: #FFD700;
+}
+
+.history-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-total {
+  font-weight: bold;
+  color: #FFD700;
+  font-size: 1.1rem;
+}
+
+.history-double {
+  font-size: 0.7rem;
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.history-empty {
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* Dice Probability */
+.dice-probability {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.dice-probability h4 {
+  margin: 0 0 16px;
+  color: #FFD700;
+  font-size: 0.9rem;
+}
+
+.probability-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.probability-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+
+.prob-label {
+  width: 32px;
+  font-weight: bold;
+  color: #FFD700;
+  text-align: center;
+}
+
+.prob-bar {
+  flex: 1;
+  height: 16px;
+  background: linear-gradient(90deg, #FF6B35 0%, #FFD700 100%);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.prob-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.prob-value {
+  width: 50px;
+  text-align: right;
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.probability-note {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+}
+
+/* 3D Dice Cube */
+.dice-3d-cube {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(20deg);
+  transition: transform 0.3s ease;
+}
+
+.dice-3d-cube:hover {
+  transform: rotateX(-20deg) rotateY(20deg) scale(1.1);
+}
+
+.dice-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  border: 2px solid #ddd;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.dice-face.front  { transform: rotateY(0deg) translateZ(50%); }
+.dice-face.back   { transform: rotateY(180deg) translateZ(50%); }
+.dice-face.right  { transform: rotateY(90deg) translateZ(50%); }
+.dice-face.left   { transform: rotateY(-90deg) translateZ(50%); }
+.dice-face.top    { transform: rotateX(90deg) translateZ(50%); }
+.dice-face.bottom { transform: rotateX(-90deg) translateZ(50%); }

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@monopoly/shared/*": ["packages/shared/src/*"],
+      "@monopoly/game-engine/*": ["packages/game-engine/src/*"],
+      "@monopoly/rules-engine/*": ["packages/rules-engine/src/*"],
+      "@monopoly/networking/*": ["packages/networking/src/*"],
+      "@monopoly/modding/*": ["packages/modding/src/*"],
+      "@monopoly/ui-components/*": ["packages/ui-components/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "build", ".turbo"]
+}

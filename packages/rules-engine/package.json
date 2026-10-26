@@ -1,0 +1,34 @@
+{
+  "name": "@monopoly/rules-engine",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./registry": "./src/registry.ts",
+    "./processor": "./src/processor.ts",
+    "./dsl": "./src/dsl.ts",
+    "./builtin": "./src/builtin.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@monopoly/shared": "workspace:*",
+    "@monopoly/game-engine": "workspace:*",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@monopoly/eslint-config": "workspace:*",
+    "@monopoly/tsconfig": "workspace:*",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}
